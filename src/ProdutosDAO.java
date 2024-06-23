@@ -10,11 +10,10 @@
 
 import java.sql.PreparedStatement;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
+
 
 
 public class ProdutosDAO {
@@ -24,18 +23,6 @@ public class ProdutosDAO {
     ResultSet resultset;
     ArrayList<ProdutosDTO> listagem = new ArrayList<>();
     
-    public boolean conectar(){
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/uc11","root", "29Pla#174");
-            return true;
-        } catch (ClassNotFoundException | SQLException ex) {
-            System.out.println("Erro ao conectar: " + ex.getMessage());
-            return false;
-        }
-    }
-    
-    
     public void cadastrarProduto (ProdutosDTO produto){
         int status;
         try { 
@@ -44,7 +31,7 @@ public class ProdutosDAO {
             prep.setString(1, produto.getNome());
             prep.setDouble(2, produto.getValor());
             prep.setString(3, produto.getStatus());
-        }catch (SQLException ex){
+        }catch (Exception ex){
              System.out.println("Erro ao conectar: " + ex.getMessage());
             
         
