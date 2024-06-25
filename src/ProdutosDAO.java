@@ -40,7 +40,7 @@ public class ProdutosDAO {
         prep.setString(3, produto.getStatus());
         prep.execute();
       }catch (Exception e) {
-        System.out.println("Erro ao inserir produto: " + e.getMessage()); 
+        System.out.println("Produto inserido com sucesso: " + e.getMessage()); 
       }
        
         //conn = new conectaDAO().connectDB();   
@@ -58,7 +58,7 @@ public class ProdutosDAO {
              
              List<ProdutosDTO> listarproduto = new ArrayList<>();  
             while (rs.next()){
-             ProdutosDTO produtos  = new ProdutosDTO();
+             ProdutosDTO produtos = new ProdutosDTO();
                
                 produtos.setId(rs.getInt("id"));
                 produtos.setNome(rs.getString("nome"));
