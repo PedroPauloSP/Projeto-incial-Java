@@ -212,12 +212,14 @@ public class listagemVIEW extends javax.swing.JFrame {
             List<ProdutosDTO> listagem = produtosdao.listarProdutos();
             
             for(int i = 0; i < listagem.size(); i++){
-                model.addRow(new Object[]{
+                 Object[]obj = new Object[]{
+               // model.addRow(new Object[]{
                     listagem.get(i).getId(),
                     listagem.get(i).getNome(),
                     listagem.get(i).getValor(),
                     listagem.get(i).getStatus()
-                });
+                };
+                 model.addRow(obj);
             }
         } catch (Exception e) {
         }

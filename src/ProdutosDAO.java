@@ -48,7 +48,7 @@ public class ProdutosDAO {
     
     public List<ProdutosDTO> listarProdutos(){
         
-        String sql = "SELECT * FROM produtos WHERE nome LIKE ?";
+        String sql = "SELECT * FROM produtos ";
         
          try {
                     
@@ -56,7 +56,7 @@ public class ProdutosDAO {
             
              ResultSet rs = stmt.executeQuery();
              
-             List<ProdutosDTO> listarproduto = new ArrayList<>();  
+            ArrayList<ProdutosDTO> listarproduto = new ArrayList<>();  
             while (rs.next()){
              ProdutosDTO produtos = new ProdutosDTO();
                
