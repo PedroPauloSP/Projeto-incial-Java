@@ -22,7 +22,7 @@ public class conectaDAO {
         
         try {
         
-       Connection  conn = DriverManager.getConnection("jdbc:mysql://localhost/uc11", "root", "29Pla#174");
+       Connection  conn = DriverManager.getConnection("jdbc:mysql://localhost/uc11","root","29Pla#174");
             
        return conn;
         } catch (SQLException erro){
