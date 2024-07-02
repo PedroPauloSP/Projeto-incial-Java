@@ -30,6 +30,30 @@ public class ProdutosDAO {
     
     ArrayList<ProdutosDTO> listagem = new ArrayList<>();
     
+    
+     public ProdutosDTO getProduto(int id) {
+        String sql = "SELECT * FROM produtos WHERE id = ?";
+
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            
+            ProdutosDTO produto = new ProdutosDTO();
+            rs.next();
+            produto.setNome(rs.getString("nome"));
+            produto.setValor(rs.getInt("valor"));
+            produto.setStatus(rs.getString("status"));
+            
+            
+             
+            return produto;
+        }catch (Exception e){
+            System.out.println("Erro ao consultar "+ e.getMessage());
+            return null;
+            
+        }
+    }
     public void cadastrarProduto (ProdutosDTO produto){
         
         String sql = "INSERT INTO produtos (nome, valor, status) VALUES(?,?,?)";
@@ -71,12 +95,39 @@ public class ProdutosDAO {
             }
         return listarproduto;
     }catch (Exception e) {
-        return null; 
-        
-        
+        return null;      
     }
     
     }  
+       public List<ProdutosDTO> Produtosvendidos() {
+       
+        String sql = "SELECT * FROM produtos where status like '%Vendido%'";
+       
+
+        try {
+
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+
+            ResultSet rs = stmt.executeQuery();
+
+            ArrayList<ProdutosDTO> listarproduto = new ArrayList<>();
+            while (rs.next()) {
+                ProdutosDTO produtos = new ProdutosDTO();
+
+                produtos.setId(rs.getInt("id"));
+                produtos.setNome(rs.getString("nome"));
+                produtos.setValor(rs.getInt("valor"));
+                produtos.setStatus(rs.getString("status"));
+
+                listarproduto.add(produtos);
+
+            }
+            return listarproduto;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
     
         
 }
