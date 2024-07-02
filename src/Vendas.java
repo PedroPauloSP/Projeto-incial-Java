@@ -151,7 +151,7 @@ public class Vendas extends javax.swing.JFrame {
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
         
-        listagemVIEW listagem = new listagemVIEW();
+        listagemVIEWa listagem = new listagemVIEWa();
         listagem.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
