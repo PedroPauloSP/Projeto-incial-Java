@@ -262,11 +262,6 @@ try{
         int valor = Integer.parseInt(txtValor.getText());
         String status =  "Vendido";    
         
-        if(status == "Vendido") {
-            JOptionPane.showMessageDialog(this, "Já vendido");
-          
-        }else{
-        
         ProdutosDTO produto = new ProdutosDTO();
         
         produto.setId(id);
@@ -278,7 +273,7 @@ try{
         produtodao.venderProduto(produto);
         
         JOptionPane.showMessageDialog(this, "Venda realizada com sucesso");
-        }    
+            
         
         id_produto_venda.setText("");
         txtNome.setText("");
